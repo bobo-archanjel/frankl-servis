@@ -1,0 +1,1 @@
+Origin: composed by the build from the hero poster frame (see hero-poster-1600.webp provenance), the brake line-drawing mask and Archivo type, rendered in headless Chrome from .assets-src/og.html.

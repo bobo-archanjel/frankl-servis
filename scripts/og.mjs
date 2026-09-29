@@ -1,0 +1,12 @@
+import { chromium } from 'playwright-core';
+import sharp from 'sharp';
+import { pathToFileURL } from 'node:url';
+const b = await chromium.launch({ channel: 'chrome', args: ['--allow-file-access-from-files'] });
+const p = await b.newPage({ viewport: { width: 1200, height: 630 } });
+await p.goto(pathToFileURL('.assets-src/og.html').href, { waitUntil: 'load' });
+await p.evaluate(() => document.fonts.ready);
+await p.waitForTimeout(400);
+const png = await p.screenshot();
+await sharp(png).jpeg({ quality: 84, mozjpeg: true }).toFile('public/og.jpg');
+await b.close();
+console.log('og ok');

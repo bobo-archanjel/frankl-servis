@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bobo-archanjel.github.io/frankl-servis/sitemap.xml

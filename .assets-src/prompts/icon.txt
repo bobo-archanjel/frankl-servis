@@ -1,0 +1,1 @@
+Origin: authored by the build. Favicon mark (cobalt circle with a geometric F) rasterized from public/favicon.svg with sharp.

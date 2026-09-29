@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.claude/
+.impeccable/review/
+.assets-src/*
+!.assets-src/prompts/
+!.assets-src/og.html
