@@ -1,4 +1,3 @@
-import '@fontsource-variable/archivo/wdth.css';
 import 'lenis/dist/lenis.css';
 import './style.css';
 import Lenis from 'lenis';
@@ -22,14 +21,18 @@ const setToggle = (paused) => {
 const play = () => video.play().then(() => setToggle(false)).catch(() => setToggle(true));
 const pause = () => { video.pause(); setToggle(true); };
 
-if (reduceMq.matches || navigator.connection?.saveData) { userPaused = true; pause(); }
+if (reduceMq.matches || navigator.connection?.saveData) { userPaused = true; setToggle(true); }
+// Start the film only after the page has loaded, so it never competes with the poster and fonts.
+let filmReady = false;
+const startFilm = () => { filmReady = true; if (!userPaused) { video.preload = 'auto'; play(); } };
+document.readyState === 'complete' ? startFilm() : window.addEventListener('load', startFilm, { once: true });
 toggle.addEventListener('click', () => {
   userPaused = !video.paused;
   userPaused ? pause() : play();
 });
 reduceMq.addEventListener('change', (e) => { if (e.matches) { userPaused = true; pause(); } });
 new IntersectionObserver(([entry]) => {
-  if (userPaused) return;
+  if (userPaused || !filmReady) return;
   entry.isIntersecting ? play() : video.pause();
 }, { threshold: 0.05 }).observe($('.hero__plate'));
 

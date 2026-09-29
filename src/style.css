@@ -1,4 +1,12 @@
 /* Frankl Servis: workshop-manual world. Tokens first, then components in page order. */
+/* Archivo variable, subset to Latin + Slovak, axes limited to wght 400-800 / wdth 62-100 (OFL, google/fonts). */
+@font-face {
+  font-family: 'Archivo Variable';
+  src: url('./fonts/archivo-sk.woff2') format('woff2');
+  font-weight: 400 800;
+  font-stretch: 62% 100%;
+  font-display: swap;
+}
 :root {
   --paper: #edefec;
   --paper-2: #e2e5e1;
@@ -147,8 +155,8 @@ html { scrollbar-color: var(--ink-2) var(--paper-2); }
   position: absolute; right: -3%; top: 7%;
   width: min(56%, 920px); aspect-ratio: 1936 / 1114;
   background: var(--on-plate);
-  -webkit-mask: url('/media/brake-exploded-1600.webp') center / contain no-repeat;
-  mask: url('/media/brake-exploded-1600.webp') center / contain no-repeat;
+  -webkit-mask: url('/media/brake-exploded-900.webp') center / contain no-repeat;
+  mask: url('/media/brake-exploded-900.webp') center / contain no-repeat;
   opacity: 0.2; will-change: transform;
 }
 .hero__shade {
@@ -224,9 +232,15 @@ html { scrollbar-color: var(--ink-2) var(--paper-2); }
 .exploded__art, .exploded__callouts { aspect-ratio: 1936 / 1114; width: 100%; }
 .exploded__art {
   background: var(--ink);
-  -webkit-mask: url('/media/brake-exploded-1600.webp') center / contain no-repeat;
-  mask: url('/media/brake-exploded-1600.webp') center / contain no-repeat;
+  -webkit-mask: url('/media/brake-exploded-900.webp') center / contain no-repeat;
+  mask: url('/media/brake-exploded-900.webp') center / contain no-repeat;
   opacity: 0.88;
+}
+@media (min-width: 900px) {
+  .exploded__art {
+    -webkit-mask-image: url('/media/brake-exploded-1600.webp');
+    mask-image: url('/media/brake-exploded-1600.webp');
+  }
 }
 .exploded__callouts { position: absolute; inset: 0 0 auto 0; }
 .co { position: absolute; inset: 0; pointer-events: none; }

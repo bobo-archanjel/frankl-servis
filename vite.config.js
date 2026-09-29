@@ -12,13 +12,13 @@ const phosphor = () => ({
     ),
 });
 
-// Preload the Latin Archivo subset (hashed by Vite) so the hero title paints in its real face.
+// Preload the Latin + Slovak Archivo subset (hashed by Vite) so the hero title paints in its real face.
 const fontPreload = (base) => ({
   name: 'font-preload',
   transformIndexHtml: {
     order: 'post',
     handler(html, ctx) {
-      const file = ctx.bundle && Object.keys(ctx.bundle).find((k) => /archivo-latin-wdth-normal.*\.woff2$/.test(k));
+      const file = ctx.bundle && Object.keys(ctx.bundle).find((k) => /archivo-sk.*\.woff2$/.test(k));
       return file
         ? html.replace('</title>', `</title>\n  <link rel="preload" as="font" type="font/woff2" href="${base}${file}" crossorigin>`)
         : html;
